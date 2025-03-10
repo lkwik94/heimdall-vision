@@ -1,0 +1,5 @@
+2025-03-09 13:48:19,140 - heimdall.main - INFO - Starting Heimdall Systems
+2025-03-09 13:48:19,142 - heimdall.config - INFO - Loaded configuration from: /root/dev/heimdall_systems/heimdall/config/simulation.yaml
+2025-03-09 13:48:19,142 - heimdall.system - INFO - Heimdall System initialized
+2025-03-09 13:48:19,142 - heimdall.system - INFO - Starting Heimdall System
+2025-03-09 13:48:19,142 - heimdall.main - INFO - System running. Press Ctrl+C to stop.

@@ -1,0 +1,28 @@
+cameras:
+  cam_1:
+    defect_probability: 0.3
+    height: 480
+    inject_defects: true
+    pattern: bottle
+    type: simulation
+    width: 640
+  cam_2:
+    defect_probability: 0.2
+    height: 480
+    inject_defects: true
+    pattern: bottle
+    type: simulation
+    width: 640
+stations:
+  base_inspection:
+    camera_id: cam_1
+    pipeline_type: bottle_base
+    rate_limit_ms: 100
+  sidewall_inspection:
+    camera_id: cam_2
+    pipeline_type: basic
+    rate_limit_ms: 100
+system:
+  log_level: INFO
+  name: Heimdall Systems Simulation
+  version: 0.1.0
