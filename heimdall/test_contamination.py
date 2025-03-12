@@ -99,20 +99,15 @@ def test_contamination_inspection():
             else:
                 print("  Aucun défaut détecté!")
             
-            # Afficher les images (résultats visuels)
-            cv2.imshow("Image originale", result.images["original"])
-            cv2.imshow("Image traitée", result.images["processed"])
+            # Sauvegarder les images (résultats visuels) au lieu de les afficher
+            cv2.imwrite(f"results/original_{i+1}.jpg", result.images["original"])
+            cv2.imwrite(f"results/processed_{i+1}.jpg", result.images["processed"])
             
             if "visualization" in result.images:
-                cv2.imshow("Visualisation", result.images["visualization"])
-                
-            # Attendre 3 secondes avant de continuer
-            # Utiliser 3000 ms au lieu de 0 pour éviter de bloquer indéfiniment
-            cv2.waitKey(3000)
+                cv2.imwrite(f"results/visualization_{i+1}.jpg", result.images["visualization"])
     
     # Fermer proprement les ressources
     source.close()
-    cv2.destroyAllWindows()
     
     # Résumé des résultats
     defect_counts = [r.defect_count for r in results]
