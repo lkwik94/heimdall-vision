@@ -1,0 +1,54 @@
+[package]
+name = "heimdall-gige"
+version = "0.1.0"
+edition = "2021"
+authors = ["Heimdall Systems Team"]
+description = "Module d'acquisition d'images pour caméras GigE Vision dans un contexte d'inspection de bouteilles à haute cadence"
+
+[dependencies]
+# Dépendances de base
+heimdall-core = { path = "../heimdall-core" }
+heimdall-camera = { path = "../heimdall-camera" }
+thiserror = "1.0.50"
+log = "0.4.20"
+tracing = "0.1.40"
+
+# Interface avec Aravis (GigE Vision)
+aravis-rs = "0.6.3"
+aravis-sys = "0.6.3"
+
+# Gestion asynchrone
+tokio = { version = "1.34.0", features = ["full"] }
+async-trait = "0.1.74"
+futures = "0.3.28"
+
+# Sérialisation
+serde = { version = "1.0.193", features = ["derive"] }
+serde_json = "1.0.108"
+
+# Gestion de la configuration
+config = "0.13.3"
+
+# Traitement d'images
+image = "0.24.7"
+ndarray = "0.15.6"
+
+# Métriques et surveillance
+metrics = "0.21.1"
+metrics-exporter-prometheus = "0.12.1"
+
+# Gestion des erreurs et reprise
+backoff = "0.4.0"
+anyhow = "1.0.75"
+
+# Tests
+[dev-dependencies]
+mockall = "0.11.4"
+tokio-test = "0.4.3"
+criterion = "0.5.1"
+proptest = "1.2.0"
+test-case = "3.3.1"
+
+[[bench]]
+name = "acquisition_bench"
+harness = false
