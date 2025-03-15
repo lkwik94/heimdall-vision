@@ -8,7 +8,8 @@ members = [
     "heimdall-cli",
     "heimdall-py",
     "heimdall-perf",
-    "heimdall-lighting"
+    "heimdall-lighting",
+    "heimdall-pipeline"
 ]
 
 [profile.dev]

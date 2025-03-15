@@ -1,0 +1,58 @@
+[package]
+name = "heimdall-pipeline"
+version = "0.1.0"
+edition = "2021"
+authors = ["Heimdall Systems Team"]
+description = "High-performance image acquisition pipeline for Heimdall Vision System"
+
+[dependencies]
+# Dépendances de base
+heimdall-core = { path = "../heimdall-core" }
+heimdall-camera = { path = "../heimdall-camera" }
+heimdall-rt = { path = "../heimdall-rt" }
+thiserror = "1.0.50"
+log = "0.4.20"
+tracing = "0.1.40"
+
+# Primitives lock-free et temps réel
+crossbeam = "0.8.2"
+crossbeam-epoch = "0.9.15"
+crossbeam-utils = "0.8.16"
+parking_lot = "0.12.1"
+lockfree = "0.5.1"
+
+# Gestion asynchrone temps réel
+tokio = { version = "1.34.0", features = ["full", "rt-multi-thread"] }
+async-io = "1.13.0"
+futures = "0.3.29"
+
+# Traitement d'images
+image = "0.24.7"
+ndarray = "0.15.6"
+
+# Sérialisation
+serde = { version = "1.0.193", features = ["derive"] }
+bincode = "1.3.3"
+
+# Métriques et monitoring
+metrics = "0.21.1"
+metrics-exporter-prometheus = "0.12.1"
+
+# Ordonnancement temps réel (Linux uniquement)
+libc = "0.2.150"
+nix = { version = "0.27.1", features = ["process", "sched"] }
+
+# Horodatage précis
+chrono = { version = "0.4.31", features = ["serde"] }
+time = "0.3.30"
+
+[dev-dependencies]
+criterion = "0.5.1"
+rand = "0.8.5"
+tempfile = "3.8.1"
+mockall = "0.11.4"
+tokio-test = "0.4.3"
+
+[[bench]]
+name = "pipeline_bench"
+harness = false
