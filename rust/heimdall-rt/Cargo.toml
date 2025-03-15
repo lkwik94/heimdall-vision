@@ -1,0 +1,37 @@
+[package]
+name = "heimdall-rt"
+version = "0.1.0"
+edition = "2021"
+authors = ["Heimdall Systems Team"]
+description = "Real-time components for Heimdall Vision System"
+
+[dependencies]
+# Dépendances de base
+heimdall-core = { path = "../heimdall-core" }
+thiserror = "1.0.50"
+log = "0.4.20"
+tracing = "0.1.40"
+
+# Primitives temps réel
+crossbeam = "0.8.2"
+parking_lot = "0.12.1"
+lockfree = "0.5.1"
+
+# Gestion asynchrone temps réel
+tokio = { version = "1.34.0", features = ["full", "rt-multi-thread"] }
+async-io = "1.13.0"
+futures = "0.3.29"
+
+# Ordonnancement temps réel (Linux uniquement)
+libc = "0.2.150"
+nix = { version = "0.27.1", features = ["process", "sched"] }
+
+# Alternative: RTIC pour les systèmes embarqués
+# rtic = "2.0.1"
+
+[target.'cfg(target_os = "linux")'.dependencies]
+# Priorités temps réel Linux
+rtkit = "0.0.5"
+
+[dev-dependencies]
+criterion = "0.5.1"

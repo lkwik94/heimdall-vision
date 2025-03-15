@@ -1,0 +1,22 @@
+[package]
+name = "heimdall-py"
+version = "0.1.0"
+edition = "2021"
+authors = ["Heimdall Systems Team"]
+description = "Python bindings for Heimdall Vision System"
+
+[lib]
+name = "heimdall"
+crate-type = ["cdylib"]
+
+[dependencies]
+# Composants Heimdall
+heimdall-core = { path = "../heimdall-core", features = ["python"] }
+heimdall-camera = { path = "../heimdall-camera" }
+
+# Python bindings
+pyo3 = { version = "0.19.0", features = ["extension-module"] }
+numpy = "0.19.0"
+
+# Logging
+tracing = "0.1.40"
