@@ -1,0 +1,27 @@
+[workspace]
+members = [
+    "heimdall-core",
+    "heimdall-camera",
+    "heimdall-rt",
+    "heimdall-ipc",
+    "heimdall-server",
+    "heimdall-cli",
+    "heimdall-py"
+]
+
+[profile.dev]
+opt-level = 1      # Optimisation de base pour le développement
+
+[profile.release]
+opt-level = 3      # Optimisation maximale
+lto = "fat"        # Link-time optimization complète
+codegen-units = 1  # Optimisation maximale, compilation plus lente
+panic = "abort"    # Réduire la taille du binaire en cas de panique
+strip = true       # Supprimer les symboles de débogage
+debug = false      # Pas d'informations de débogage
+
+[profile.bench]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+debug = true       # Garder les informations de débogage pour le profilage

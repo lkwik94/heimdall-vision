@@ -1,0 +1,41 @@
+[build]
+rustflags = [
+    # Optimisations LLVM
+    "-C", "target-cpu=native",
+    "-C", "opt-level=3",
+    
+    # Vectorisation SIMD
+    "-C", "target-feature=+avx,+avx2,+fma,+sse,+sse2,+sse3,+sse4.1,+sse4.2",
+    
+    # Optimisations de link-time
+    "-C", "lto=fat",
+    "-C", "codegen-units=1",
+    
+    # Optimisations pour les systèmes temps réel
+    "-C", "force-frame-pointers=yes",
+    
+    # Désactiver les vérifications de débordement en release
+    "-C", "overflow-checks=no",
+]
+
+[target.'cfg(target_os = "linux")']
+rustflags = [
+    # Flags spécifiques à Linux
+    "-C", "link-arg=-Wl,--as-needed",
+]
+
+[target.'cfg(target_os = "windows")']
+rustflags = [
+    # Flags spécifiques à Windows
+    "-C", "link-arg=/LTCG",
+]
+
+[alias]
+# Exécuter tous les tests
+test-all = "test --workspace --all-features"
+
+# Exécuter les tests avec le rapport de couverture
+test-coverage = "llvm-cov --workspace --all-features --lcov --output-path lcov.info"
+
+# Exécuter les benchmarks
+bench-all = "bench --workspace"

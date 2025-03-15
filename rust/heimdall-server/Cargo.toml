@@ -1,0 +1,39 @@
+[package]
+name = "heimdall-server"
+version = "0.1.0"
+edition = "2021"
+authors = ["Heimdall Systems Team"]
+description = "Processing server for Heimdall Vision System"
+
+[dependencies]
+# Composants Heimdall
+heimdall-core = { path = "../heimdall-core" }
+heimdall-camera = { path = "../heimdall-camera" }
+heimdall-rt = { path = "../heimdall-rt" }
+heimdall-ipc = { path = "../heimdall-ipc" }
+
+# Gestion asynchrone
+tokio = { version = "1.34.0", features = ["full"] }
+async-trait = "0.1.74"
+
+# API Web
+axum = "0.6.20"
+tower = "0.4.13"
+tower-http = { version = "0.4.4", features = ["cors", "trace"] }
+
+# Sérialisation
+serde = { version = "1.0.193", features = ["derive"] }
+serde_json = "1.0.108"
+
+# Logging et métriques
+tracing = "0.1.40"
+tracing-subscriber = { version = "0.3.18", features = ["env-filter"] }
+metrics = "0.21.1"
+metrics-exporter-prometheus = "0.12.1"
+
+# Configuration
+config = "0.13.3"
+clap = { version = "4.4.8", features = ["derive"] }
+
+[dev-dependencies]
+reqwest = { version = "0.11.22", features = ["json"] }
