@@ -1,0 +1,35 @@
+[package]
+name = "heimdall-perf"
+version = "0.1.0"
+edition = "2021"
+authors = ["Heimdall Systems Team"]
+description = "Performance analysis tools for Heimdall Vision System"
+
+[dependencies]
+# Composants Heimdall
+heimdall-core = { path = "../heimdall-core" }
+heimdall-rt = { path = "../heimdall-rt" }
+
+# Mesure de performance
+criterion = { version = "0.5.1", features = ["html_reports"] }
+pprof = { version = "0.12.1", features = ["flamegraph", "protobuf"] }
+inferno = "0.11.19"
+
+# Visualisation
+plotters = "0.3.5"
+tabled = "0.14.0"
+
+# Utilitaires
+thiserror = "1.0.50"
+log = "0.4.20"
+tracing = "0.1.40"
+serde = { version = "1.0.193", features = ["derive"] }
+serde_json = "1.0.108"
+chrono = "0.4.31"
+
+# Système
+libc = "0.2.150"
+procfs = "0.15.1"
+
+[dev-dependencies]
+tempfile = "3.8.1"
